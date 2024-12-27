@@ -1,0 +1,57 @@
+import tkinter as tk
+from tkinter import  Label, Button, Frame
+
+def create_clinic_frame(root, clinic_name, color):
+    frame = Frame(root, bg=color, width=200, height=200)
+    frame.pack(side="left", padx=46, pady=120)
+
+
+    Label(frame, text=clinic_name, bg=color, fg="white").pack(pady=27,padx=20)
+
+    Button(frame, text="Doctors", bg="white", fg="black").pack(pady=27)
+    Button(frame, text="Patients", bg="white", fg="black").pack(pady=27)
+    Button(frame, text="Delete", bg="red", fg="white").pack(pady=27)
+
+    return frame
+
+def main():
+  root = tk.Tk()
+  root.title("view clinic - Medical Management System")
+  root.geometry("800x600")
+  root.configure(bg="#f0f8ff")  # Light blue background
+
+  # Create a frame for the top navigation bar
+  top_frame = tk.Frame(root, bg="#4682b4", height=50)
+  top_frame.pack(fill=tk.X)
+
+  # Add a logo placeholder
+  logo_placeholder = tk.Label(top_frame, text="LOGO", bg="#4682b4", fg="white", font=("Arial", 16))
+  logo_placeholder.pack(side=tk.LEFT, padx=20, pady=10)
+
+  # Add navigation buttons
+  nav_buttons = ["Home", "Clinics", "contact us"]
+  for button in nav_buttons:
+    btn = tk.Button(top_frame, text=button, bg="#87cefa", fg="black", font=("Arial", 12), relief="flat")
+    btn.pack(side=tk.LEFT, padx=10)
+
+  # Add a notification button (bell icon)
+  notification_btn = tk.Button(top_frame, text="\ud83d\udd14", bg="#4682b4", fg="white", font=("Arial", 16), relief="flat")
+  notification_btn.pack(side=tk.RIGHT, padx=10)
+
+  down_frame = tk.Frame(root, bg="white")
+  down_frame.pack(fill="both", expand=True)
+
+    # Create clinic frames
+  cardiology_frame = create_clinic_frame(root, "Cardiology ", "#4682b4")
+  neurology_frame = create_clinic_frame(root, "Neurology ", "#4682b4")
+  dermatology_frame = create_clinic_frame(root, "Dermatology", "#4682b4")
+  pediatrics_frame = create_clinic_frame(root, "Pediatrics ", "#4682b4")
+
+    # Add clinic button
+  add_clinic_button = Button(root, text="Add Clinic", bg="#4682b4", fg="white")
+  add_clinic_button.pack( pady=10)
+  add_clinic_button.place(x=370, y=500)
+  root.mainloop()
+
+if __name__ == "__main__":
+    main()
