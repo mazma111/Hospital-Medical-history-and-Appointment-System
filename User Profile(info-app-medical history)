@@ -1,14 +1,23 @@
 import tkinter as tk
 from tkinter import Canvas
 from PIL import Image, ImageTk, ImageDraw
+from classes import *
+from database import *
 
-
-def show_info_page():
+create_tables()
+def show_info_page(password_from_login):
+    data = Patient.display_patient_info(password_from_login)   # password_from_login = "ahmed1234"  # This will be the password entered by the user during login
     clear_right_side()
     tk.Label(canvas, text="User Information", font=("Arial", 16), bg="#CCE5FF").place(x=300, y=60)
-    tk.Label(canvas, text="First Name: John", font=("Arial", 12), bg="#CCE5FF").place(x=300, y=100)
-    tk.Label(canvas, text="Last Name: Doe", font=("Arial", 12), bg="#CCE5FF").place(x=300, y=140)
-    tk.Label(canvas, text="Email: john.doe@example.com", font=("Arial", 12), bg="#CCE5FF").place(x=300, y=180)
+    tk.Label(canvas, text="First Name: "+ data[1] , font=("Arial", 12), bg="#CCE5FF").place(x=300, y=100)
+    tk.Label(canvas, text="Last Name: "+ data[2], font=("Arial", 12), bg="#CCE5FF").place(x=300, y=140)
+    tk.Label(canvas, text="Email: "+ data[3], font=("Arial", 12), bg="#CCE5FF").place(x=300, y=180)
+    tk.Label(canvas, text="Password: "+ data[4], font=("Arial", 12), bg="#CCE5FF").place(x=300, y=220)
+    tk.Label(canvas, text="Number: "+ data[5], font=("Arial", 12), bg="#CCE5FF").place(x=300, y=260)
+    tk.Label(canvas, text=f"Date of birth: {data[6]}", font=("Arial", 12), bg="#CCE5FF").place(x=300, y=300)
+    tk.Label(canvas, text="Gender: "+ data[7], font=("Arial", 12), bg="#CCE5FF").place(x=300, y=340)
+    tk.Label(canvas, text="Height: "+ str(data[8]), font=("Arial", 12), bg="#CCE5FF").place(x=300, y=380)
+    tk.Label(canvas, text="Weight: "+ str(data[9]), font=("Arial", 12), bg="#CCE5FF").place(x=300, y=420)
 
 
 def show_appointments_page():
@@ -98,19 +107,19 @@ canvas.pack(fill="both", expand=True)
 create_gradient(canvas, "#007BFF", "#00BFFF")
 
 # Left-side Profile Section
-image_path = r"C:\Users\afifi\OneDrive\Desktop\Year 2 projects\SWE-Hospital\ec58198c3f652de85e735d918ef85dd8.jpg"
-image = Image.open(image_path)
-image = image.resize((100, 100))
+# image_path = r"C:\Users\afifi\OneDrive\Desktop\Year 2 projects\SWE-Hospital\ec58198c3f652de85e735d918ef85dd8.jpg"
+# image = Image.open(image_path)
+# image = image.resize((100, 100))
 
-# Create circular mask
-mask = Image.new('L', (100, 100), 0)
-draw = ImageDraw.Draw(mask)
-draw.ellipse((0, 0, 100, 100), fill=255)
-image.putalpha(mask)
+# # Create circular mask
+# mask = Image.new('L', (100, 100), 0)
+# draw = ImageDraw.Draw(mask)
+# draw.ellipse((0, 0, 100, 100), fill=255)
+# image.putalpha(mask)
 
-profile_pic = ImageTk.PhotoImage(image)
-profile_pic_label = tk.Label(canvas, image=profile_pic, bg="#CCE5FF")
-profile_pic_label.place(x=30, y=60)
+# profile_pic = ImageTk.PhotoImage(image)
+# profile_pic_label = tk.Label(canvas, image=profile_pic, bg="#CCE5FF")
+# profile_pic_label.place(x=30, y=60)
 
 buttons = [
     ("Info", show_info_page),
