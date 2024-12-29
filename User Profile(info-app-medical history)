@@ -5,6 +5,7 @@ from classes import *
 from database import *
 
 create_tables()
+
 def show_info_page(password_from_login):
     data = Patient.display_patient_info(password_from_login)   # password_from_login = "ahmed1234"  # This will be the password entered by the user during login
     clear_right_side()
@@ -137,3 +138,4 @@ for text, command in buttons:
 show_info_page()
 
 root.mainloop()
+
