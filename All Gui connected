@@ -225,7 +225,7 @@ class MedicalManagementSystem:
         right_frame.pack(side="right", fill="both", expand=True)
 
         # Add navigation buttons
-        nav_buttons = ["Home", "Clinics", "Patients"]
+        nav_buttons = ["Home", "Book Appointment", "Contact Us"]
         for button in nav_buttons:
             btn = tk.Button(top_frame, text=button, bg="#87cefa", fg="black", font=("Arial", 12), relief="flat")
             btn.pack(side=tk.LEFT, padx=10)
@@ -265,7 +265,7 @@ class MedicalManagementSystem:
         right_frame.pack(side="right", fill="both", expand=True)
 
         # Add navigation buttons
-        nav_buttons = ["Home", "Clinics", "Patients"]
+        nav_buttons = ["Home", "Appointments", "Patients"]
         for button in nav_buttons:
             btn = tk.Button(top_frame, text=button, bg="#87cefa", fg="black", font=("Arial", 12), relief="flat")
             btn.pack(side=tk.LEFT, padx=10)
@@ -305,7 +305,7 @@ class MedicalManagementSystem:
         right_frame.pack(side="right", fill="both", expand=True)
 
         # Add navigation buttons
-        nav_buttons = ["Home", "Manage Users", "Settings"]
+        nav_buttons = ["Home", "Clinics", "Patients"]
         for button in nav_buttons:
             btn = tk.Button(top_frame, text=button, bg="#87cefa", fg="black", font=("Arial", 12), relief="flat")
             btn.pack(side=tk.LEFT, padx=10)
@@ -329,4 +329,3 @@ def run():
     root.mainloop()
 
 run()
-
