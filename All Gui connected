@@ -198,6 +198,9 @@ class MedicalManagementSystem:
             elif role == "Doctor":
                 messagebox.showinfo("Success", "Welcome Doctor!")
                 self.create_doctor_gui()
+            elif role == "Admin":
+                messagebox.showinfo("Success", "Welcome Admin!")
+                self.create_admin_gui()
 
     def create_user_gui(self):
         """Creates and displays the user profile page GUI."""
@@ -279,7 +282,51 @@ class MedicalManagementSystem:
         # Run the main event loop for doctor window
         doctor_root.mainloop()
 
-# Initialize main window
-root = tk.Tk()
-app = MedicalManagementSystem(root)
-root.mainloop()
+    def create_admin_gui(self):
+        """Creates and displays the admin page GUI."""
+        # Initialize the admin page window
+        admin_root = tk.Tk()
+        admin_root.title("Admin Page - Medical Management System")
+        admin_root.geometry("800x600")
+        admin_root.configure(bg="#f0f8ff")  # Light blue background
+
+        # Create a frame for the top navigation bar
+        top_frame = tk.Frame(admin_root, bg="#4682b4", height=50)
+        top_frame.pack(fill=tk.X)
+
+        # Add a logo placeholder
+        logo_placeholder = tk.Label(top_frame, text="LOGO", bg="#4682b4", fg="white", font=("Arial", 16))
+        logo_placeholder.pack(side=tk.LEFT, padx=20, pady=10)
+
+        # Frames
+        left_frame = tk.Frame(admin_root)
+        left_frame.pack(side="left", fill="both", expand=True)
+        right_frame = tk.Frame(admin_root)
+        right_frame.pack(side="right", fill="both", expand=True)
+
+        # Add navigation buttons
+        nav_buttons = ["Home", "Manage Users", "Settings"]
+        for button in nav_buttons:
+            btn = tk.Button(top_frame, text=button, bg="#87cefa", fg="black", font=("Arial", 12), relief="flat")
+            btn.pack(side=tk.LEFT, padx=10)
+
+        # Add a notification button (bell icon)
+        notification_btn = tk.Button(top_frame, text="\ud83d\udd14", bg="#4682b4", fg="white", font=("Arial", 16),
+                                     relief="flat")
+        notification_btn.pack(side=tk.RIGHT, padx=10)
+
+        # Add a welcome message
+        welcome_label = tk.Label(left_frame, text="Welcome, Admin!", fg="#4682b4", font=("Arial", 20, "bold"))
+        welcome_label.place(x=100, y=250)
+
+        # Run the main event loop for admin window
+        admin_root.mainloop()
+
+# Main function to start the system
+def run():
+    root = tk.Tk()
+    app = MedicalManagementSystem(root)
+    root.mainloop()
+
+run()
+
